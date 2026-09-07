@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mystic Falls · Дневники вампира — фан-хаб</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0a10;
+    --bg-card: #14121c;
+    --blood: #7a1f2b;
+    --blood-bright: #b8324a;
+    --gold: #c9a86a;
+    --text: #ece7e0;
+    --text-dim: #a39c9a;
+    --border: rgba(201,168,106,0.18);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+  }
+  h1, h2, h3, .voice {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    margin: 0;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 24px; letter-spacing: 1px; color: var(--gold); }
+  nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
+  nav a { font-size: 13px; color: var(--text-dim); letter-spacing: 0.5px; }
+  nav a:hover { color: var(--gold); }
+
+  .hero {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 90px 24px 70px;
+    text-align: center;
+  }
+  .hero .eyebrow { color: var(--blood-bright); font-size: 13px; letter-spacing: 2px; margin-bottom: 18px; }
+  .hero h1 {
+    font-size: 52px;
+    line-height: 1.15;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  @media (min-width: 720px) { .hero h1 { font-size: 68px; } }
+  .hero p {
+    color: var(--text-dim);
+    font-size: 17px;
+    max-width: 460px;
+    margin: 24px auto 0;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+
+  .section { max-width: 1000px; margin: 0 auto; padding: 80px 24px; }
+  .section-head { max-width: 520px; margin-bottom: 44px; }
+  .section-head .eyebrow { color: var(--blood-bright); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; }
+  .section-head h2 { font-size: 36px; }
+  .section-head p { color: var(--text-dim); margin-top: 12px; font-size: 15px; }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 720px) { .char-grid { grid-template-columns: repeat(3, 1fr); } }
+  .char-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 26px 22px;
+  }
+  .char-mark {
+    width: 34px; height: 34px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .char-card h3 { font-size: 21px; color: var(--gold); }
+  .char-role { font-size: 12px; color: var(--blood-bright); letter-spacing: 1px; margin: 6px 0 12px; }
+  .char-card p { color: var(--text-dim); font-size: 14px; margin: 0; }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-season { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 22px; }
+  .tl-item h3 { font-size: 18px; margin-bottom: 6px; }
+  .tl-item p { color: var(--text-dim); font-size: 14px; margin: 0; }
+
+  .quote-band {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--blood);
+    border-radius: 4px;
+    padding: 36px 32px;
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+  .quote-band p.voice {
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .quote-band .attribution { color: var(--text-dim); font-size: 13px; margin-top: 14px; letter-spacing: 0.5px; }
+
+  .fan-note {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px 90px;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 24px 44px;
+    color: var(--text-dim);
+    font-size: 12px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Mystic Falls · Дневники вампира</div>
+  <nav>
+    <ul>
+      <li><a href="#characters">Персонажи</a></li>
+      <li><a href="#timeline">Сезоны</a></li>
+      <li><a href="#quotes">Атмосфера</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">неофициальный фан-проект</div>
+  <h1>Городок, где рассвет<br>не гарантия безопасности</h1>
+  <p>Место для тех, кто пересматривает сериал каждую осень и до сих пор спорит, на чью сторону встать.</p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="characters">
+  <div class="section-head">
+    <div class="eyebrow">действующие лица</div>
+    <h2>Кто держит город на плаву</h2>
+    <p>Три архетипа, вокруг которых крутится вся драма — от школьных коридоров до семейных склепов.</p>
+  </div>
+  <div class="char-grid">
+    <div class="char-card">
+      <div class="char-mark">Е</div>
+      <h3>Елена Гилберт</h3>
+      <div class="char-role">человеческое сердце истории</div>
+      <p>Обычная студентка, вокруг которой сходятся два мира — смертный и бессмертный. Её выбор двигает сюжет вперёд весь сериал.</p>
+    </div>
+    <div class="char-card">
+      <div class="char-mark">С</div>
+      <h3>Стефан Сальваторе</h3>
+      <div class="char-role">старается остаться человеком</div>
+      <p>Столетиями сдерживает свою природу ради тех, кого любит. Совесть сериала, даже когда это дорого ему обходится.</p>
+    </div>
+    <div class="char-card">
+      <div class="char-mark">Д</div>
+      <h3>Деймон Сальваторе</h3>
+      <div class="char-role">обаяние как броня</div>
+      <p>Живёт по принципу «бери от вечности всё». За сарказмом прячет привязанности, признавать которые не готов.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="timeline">
+  <div class="section-head">
+    <div class="eyebrow">хроника</div>
+    <h2>Путь сериала по сезонам</h2>
+    <p>Коротко о том, как менялся тон истории — своими словами, без спойлеров-простыней.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-season">01</div>
+      <div>
+        <h3>Знакомство с городом</h3>
+        <p>Тихий провинциальный городок оказывается перекрёстком древних тайн. Романтика подростковой драмы встречается с вечным конфликтом.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-season">02–03</div>
+      <div>
+        <h3>Расширение мифологии</h3>
+        <p>История выходит за пределы города — древние семьи, старые счёты и правила, которые оказываются не такими незыблемыми.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-season">04–06</div>
+      <div>
+        <h3>Цена бессмертия</h3>
+        <p>Персонажи сталкиваются с последствиями собственных решений. Сериал всё чаще задаёт вопрос: что вы готовы потерять ради тех, кого любите.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-season">07–08</div>
+      <div>
+        <h3>Закрытие круга</h3>
+        <p>Финальные сезоны сводят все линии воедино и прощаются с городом, который так и не стал по-настоящему тихим.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="quotes">
+  <div class="section-head">
+    <div class="eyebrow">настроение</div>
+    <h2>За что мы это любим</h2>
+  </div>
+  <div class="quote-band">
+    <p class="voice">Это сериал о том, что бессмертие не избавляет от боли выбора — оно просто даёт больше времени, чтобы этот выбор осмыслить.</p>
+    <div class="attribution">— впечатление фаната, не цитата из сериала</div>
+  </div>
+</section>
+
+<div class="fan-note">
+  Это неофициальный фан-проект, созданный поклонниками. Все права на персонажей и историю принадлежат правообладателям оригинального сериала. Сайт не использует официальные материалы, кадры или дословные цитаты — только собственные впечатления и пересказ своими словами.
+</div>
+
+<footer>
+  Mystic Falls · Дневники вампира · сделано фанатами, для фанатов
+</footer>
+
+</body>
+</html>
