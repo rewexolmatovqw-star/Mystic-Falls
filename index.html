@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mystic Falls · Дневники вампира — фан-хаб</title>
+<title>Mystic Falls</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,6 +20,12 @@
     --border: rgba(201,168,106,0.18);
   }
   * { box-sizing: border-box; }
+  /* Google Sites / mobile embed */
+  html, body { width: 100%; min-height: 100%; }
+  body { overflow-x: hidden; }
+  img { max-width: 100%; }
+
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
@@ -32,41 +39,69 @@
     margin: 0;
   }
   a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 26px 24px;
+    padding: 22px 24px;
     max-width: 1000px;
     margin: 0 auto;
     border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(11,10,16,0.94);
+    backdrop-filter: blur(12px);
+    z-index: 50;
   }
-  .logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 24px; letter-spacing: 1px; color: var(--gold); }
-  nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
-  nav a { font-size: 13px; color: var(--text-dim); letter-spacing: 0.5px; }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--gold);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  nav a {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.4px;
+  }
   nav a:hover { color: var(--gold); }
 
   .hero {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 90px 24px 70px;
+    padding: 88px 24px 64px;
     text-align: center;
   }
-  .hero .eyebrow { color: var(--blood-bright); font-size: 13px; letter-spacing: 2px; margin-bottom: 18px; }
+  .hero .eyebrow {
+    color: var(--blood-bright);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
   .hero h1 {
-    font-size: 52px;
+    font-size: 46px;
     line-height: 1.15;
     max-width: 640px;
     margin: 0 auto;
   }
-  @media (min-width: 720px) { .hero h1 { font-size: 68px; } }
+  @media (min-width: 720px) {
+    .hero h1 { font-size: 60px; }
+  }
   .hero p {
     color: var(--text-dim);
-    font-size: 17px;
+    font-size: 16px;
     max-width: 460px;
-    margin: 24px auto 0;
+    margin: 22px auto 0;
   }
 
   .divider {
@@ -76,193 +111,719 @@
     max-width: 1000px;
   }
 
-  .section { max-width: 1000px; margin: 0 auto; padding: 80px 24px; }
-  .section-head { max-width: 520px; margin-bottom: 44px; }
-  .section-head .eyebrow { color: var(--blood-bright); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; }
-  .section-head h2 { font-size: 36px; }
-  .section-head p { color: var(--text-dim); margin-top: 12px; font-size: 15px; }
+  .section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+  .section-head {
+    max-width: 540px;
+    margin-bottom: 36px;
+  }
+  .section-head .eyebrow {
+    color: var(--blood-bright);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .section-head h2 { font-size: 32px; }
+  .section-head p {
+    color: var(--text-dim);
+    margin-top: 10px;
+    font-size: 15px;
+  }
 
   .char-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 14px;
   }
-  @media (min-width: 720px) { .char-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 600px) {
+    .char-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 900px) {
+    .char-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
   .char-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 26px 22px;
+    border-radius: 6px;
+    padding: 22px 18px;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  }
+  .char-card:hover {
+    border-color: rgba(201,168,106,0.5);
+    background: #1a1724;
+    transform: translateY(-2px);
   }
   .char-mark {
-    width: 34px; height: 34px;
+    width: 42px;
+    height: 42px;
     border: 1px solid var(--gold);
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Cormorant Garamond', serif;
     color: var(--gold);
-    font-size: 16px;
-    margin-bottom: 16px;
+    font-size: 17px;
+    margin-bottom: 14px;
+    background: rgba(201,168,106,0.06);
   }
-  .char-card h3 { font-size: 21px; color: var(--gold); }
-  .char-role { font-size: 12px; color: var(--blood-bright); letter-spacing: 1px; margin: 6px 0 12px; }
-  .char-card p { color: var(--text-dim); font-size: 14px; margin: 0; }
 
-  .timeline { display: flex; flex-direction: column; gap: 0; }
-  .tl-item {
-    display: grid;
-    grid-template-columns: 70px 1fr;
-    gap: 20px;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--border);
+  .char-photo {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    object-position: 50% 24%;
+    border-radius: 50%;
+    margin: -2px auto 16px;
+    display: block;
+    border: 1px solid var(--border);
+    filter: saturate(0.95) contrast(1.02);
   }
-  .tl-item:last-child { border-bottom: none; }
-  .tl-season { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 22px; }
-  .tl-item h3 { font-size: 18px; margin-bottom: 6px; }
-  .tl-item p { color: var(--text-dim); font-size: 14px; margin: 0; }
+
+  /* Небольшой портрет: кадр держится на всём лице — от лба до подбородка. */
+  .char-card[data-id="elena"] .char-photo { object-position: 50% 28%; }
+  .char-card[data-id="stefan"] .char-photo { object-position: 50% 24%; }
+  .char-card[data-id="damon"] .char-photo { object-position: 50% 25%; }
+  .char-card[data-id="bonnie"] .char-photo { object-position: 50% 27%; }
+  .char-card[data-id="caroline"] .char-photo { object-position: 50% 28%; }
+  .char-card[data-id="jeremy"] .char-photo { object-position: 50% 23%; }
+  .char-card[data-id="liz"] .char-photo { object-position: 50% 28%; }
+  .char-card[data-id="klaus"] .char-photo { object-position: 50% 23%; }
+  .char-card[data-id="elijah"] .char-photo { object-position: 50% 24%; }
+  .char-card[data-id="rebecca"] .char-photo { object-position: 50% 25%; }
+  .char-card[data-id="alaric"] .char-photo { object-position: 50% 23%; }
+  .char-card[data-id="tyler"] .char-photo { object-position: 50% 24%; }
+  .photo-credit {
+    margin-top: 10px;
+    font-size: 10px;
+    color: var(--text-dim);
+    opacity: 0.75;
+  }
+
+  .char-card h3 {
+    font-size: 19px;
+    color: var(--gold);
+  }
+  .char-role {
+    font-size: 12px;
+    color: var(--blood-bright);
+    letter-spacing: 0.8px;
+    margin: 5px 0 10px;
+  }
+  .char-card p {
+    color: var(--text-dim);
+    font-size: 13.5px;
+    margin: 0;
+  }
+  .char-hint {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--gold);
+    opacity: 0.65;
+  }
+
+  .season-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .season-item {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .season-item:hover {
+    border-color: rgba(201,168,106,0.45);
+    background: #1a1724;
+  }
+  .season-num {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: 22px;
+  }
+  .season-item h3 {
+    font-size: 17px;
+    margin-bottom: 2px;
+  }
+  .season-item p {
+    color: var(--text-dim);
+    font-size: 13px;
+    margin: 0;
+  }
+  .season-arrow {
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 18px;
+  }
 
   .quote-band {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-left: 3px solid var(--blood);
     border-radius: 4px;
-    padding: 36px 32px;
-    margin: 0 auto;
-    max-width: 1000px;
+    padding: 32px 28px;
+    margin-bottom: 28px;
   }
   .quote-band p.voice {
-    font-size: 24px;
+    font-size: 21px;
     line-height: 1.5;
     color: var(--text);
   }
-  .quote-band .attribution { color: var(--text-dim); font-size: 13px; margin-top: 14px; letter-spacing: 0.5px; }
-
-  .fan-note {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 24px 90px;
+  .quote-band .attribution {
     color: var(--text-dim);
-    font-size: 13px;
+    font-size: 12px;
+    margin-top: 12px;
+    letter-spacing: 0.4px;
+  }
+
+  .facts {
+    display: grid;
+    gap: 12px;
+  }
+  @media (min-width: 700px) {
+    .facts { grid-template-columns: 1fr 1fr; }
+  }
+  .fact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 18px;
+  }
+  .fact-card h3 {
+    font-size: 17px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .fact-card p {
+    color: var(--text-dim);
+    font-size: 13.5px;
+    margin: 0;
   }
 
   footer {
     border-top: 1px solid var(--border);
-    padding: 30px 24px 44px;
+    padding: 26px 24px 36px;
     color: var(--text-dim);
     font-size: 12px;
     text-align: center;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,4,10,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.22s, visibility 0.22s;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal {
+    background: #16141f;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 84vh;
+    overflow-y: auto;
+    padding: 30px 26px;
+    position: relative;
+    transform: translateY(10px);
+    transition: transform 0.22s;
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--gold); }
+  .modal .char-mark {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .modal h2 {
+    font-size: 26px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .modal .char-role { margin-bottom: 16px; }
+  .modal .bio {
+    color: var(--text-dim);
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+  .modal .bio p { margin: 0 0 11px; }
+  .modal .bio p:last-child { margin-bottom: 0; }
+  .modal .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 18px;
+  }
+  .modal .tag {
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 11px;
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">Mystic Falls · Дневники вампира</div>
+  <div class="logo">Mystic Falls</div>
   <nav>
     <ul>
-      <li><a href="#characters">Персонажи</a></li>
-      <li><a href="#timeline">Сезоны</a></li>
-      <li><a href="#quotes">Атмосфера</a></li>
+      <li><a href="#characters">Герои</a></li>
+      <li><a href="#seasons">Сезоны</a></li>
+      <li><a href="#atmosphere">Атмосфера</a></li>
     </ul>
   </nav>
 </header>
 
 <section class="hero">
-  <div class="eyebrow">неофициальный фан-проект</div>
-  <h1>Городок, где рассвет<br>не гарантия безопасности</h1>
-  <p>Место для тех, кто пересматривает сериал каждую осень и до сих пор спорит, на чью сторону встать.</p>
+  <h1>Mystic Falls</h1>
 </section>
 
 <div class="divider"></div>
 
 <section class="section" id="characters">
   <div class="section-head">
-    <div class="eyebrow">действующие лица</div>
-    <h2>Кто держит город на плаву</h2>
-    <p>Три архетипа, вокруг которых крутится вся драма — от школьных коридоров до семейных склепов.</p>
+    <div class="eyebrow">главные герои</div>
+    <h2>Все ключевые персонажи</h2>
+    <p>Нажми на любого — откроется отдельное окно с описанием. Закрой крестиком или кликом снаружи.</p>
   </div>
   <div class="char-grid">
-    <div class="char-card">
+    <div class="char-card" data-id="elena">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Nina%20Dobrev%20by%20Gage%20Skidmore.jpg" alt="Фото актёра, сыгравшего персонажа">
       <div class="char-mark">Е</div>
       <h3>Елена Гилберт</h3>
-      <div class="char-role">человеческое сердце истории</div>
-      <p>Обычная студентка, вокруг которой сходятся два мира — смертный и бессмертный. Её выбор двигает сюжет вперёд весь сериал.</p>
+      <div class="char-role">главная героиня</div>
+      <p>Центр всей истории. Обычная девушка, вокруг которой сходятся два мира.</p>
+      <div class="char-hint">открыть →</div>
     </div>
-    <div class="char-card">
+    <div class="char-card" data-id="stefan">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Paul%20Wesley%20at%20the%2038th%20People%27s%20Choice%20Award.jpg" alt="Фото актёра, сыгравшего персонажа">
       <div class="char-mark">С</div>
       <h3>Стефан Сальваторе</h3>
-      <div class="char-role">старается остаться человеком</div>
-      <p>Столетиями сдерживает свою природу ради тех, кого любит. Совесть сериала, даже когда это дорого ему обходится.</p>
+      <div class="char-role">брат-идеалист</div>
+      <p>Столетиями сдерживает природу ради тех, кого любит.</p>
+      <div class="char-hint">открыть →</div>
     </div>
-    <div class="char-card">
+    <div class="char-card" data-id="damon">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ian%20Somerhalder%202012.jpg" alt="Фото актёра, сыгравшего персонажа">
       <div class="char-mark">Д</div>
       <h3>Деймон Сальваторе</h3>
-      <div class="char-role">обаяние как броня</div>
-      <p>Живёт по принципу «бери от вечности всё». За сарказмом прячет привязанности, признавать которые не готов.</p>
+      <div class="char-role">брат-циник</div>
+      <p>За сарказмом и обаянием прячет настоящие чувства.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="bonnie">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kat%20Graham%20by%20Gage%20Skidmore.jpg" alt="Фото актёра, сыгравшего персонажа">
+      <div class="char-mark">Б</div>
+      <h3>Бонни Беннетт</h3>
+      <div class="char-role">ведьма · опора</div>
+      <p>Сила, на которой часто держится весь город и друзья.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="caroline">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Candice%20Accola%20by%20Gage%20Skidmore.jpg" alt="Фото актёра, сыгравшего персонажа">
+      <div class="char-mark">К</div>
+      <h3>Кэролайн Форбс</h3>
+      <div class="char-role">сила и рост</div>
+      <p>От школьной перфекционистки — к одной из самых цельных.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="jeremy">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Steven%20R.%20McQueen%20by%20Gage%20Skidmore.jpg" alt="Фото актёра, сыгравшего персонажа">
+      <div class="char-mark">Дж</div>
+      <h3>Джереми Гилберт</h3>
+      <div class="char-role">младший брат Елены</div>
+      <p>Растёт в тени сестры и города, где норма уже не норма.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="liz">
+      <img class="char-photo" src="https://image.pmgstatic.com/cache/resized/w468/files/images/film/photos/162/155/162155135_baa0ed.jpg" alt="Маргарит МакИнтайр — Лиз Форбс">
+      <div class="char-mark">Л</div>
+      <h3>Лиз Форбс</h3>
+      <div class="char-role">шериф · мама Кэролайн</div>
+      <p>Знает о городе больше, чем показывает. Защищает дочь и жителей.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="klaus">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Joseph%20Morgan%20by%20Gage%20Skidmore%20cropped.jpg" alt="Джозеф Морган — Клаус Майклсон">
+      <div class="char-mark">К</div>
+      <h3>Клаус Майклсон</h3>
+      <div class="char-role">первородный гибрид</div>
+      <p>Один из самых опасных и харизматичных персонажей вселенной.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="elijah">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Daniel%20Gillies%20at%20PaleyFest%202014.jpg" alt="Дэниел Гиллис — Элайджа Майклсон">
+      <div class="char-mark">Э</div>
+      <h3>Элайджа Майклсон</h3>
+      <div class="char-role">первородный · семья</div>
+      <p>Спокойный, благородный и преданный своей семье Майклсонов.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="rebekah">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Claire%20Holt%20headshot.jpg" alt="Клэр Холт — Ребекка Майклсон">
+      <div class="char-mark">Р</div>
+      <h3>Ребекка Майклсон</h3>
+      <div class="char-role">первородная вампирша</div>
+      <p>Сильная и эмоциональная сестра, мечтающая о нормальной жизни.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="alaric">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/MattDavis.jpg" alt="Мэттью Дэвис — Аларик Зальцман">
+      <div class="char-mark">А</div>
+      <h3>Аларик Зальцман</h3>
+      <div class="char-role">охотник · наставник</div>
+      <p>Надёжный союзник и защитник друзей в сверхъестественном мире.</p>
+      <div class="char-hint">открыть →</div>
+    </div>
+    <div class="char-card" data-id="tyler">
+      <img class="char-photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Michael%20Trevino%20on%20June%2015%2C%202013.jpg" alt="Майкл Тревино — Тайлер Локвуд">
+      <div class="char-mark">Т</div>
+      <h3>Тайлер Локвуд</h3>
+      <div class="char-role">оборотень · гибрид</div>
+      <p>Сильный и упрямый герой, чья история тесно связана с проклятием Локвудов.</p>
+      <div class="char-hint">открыть →</div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<section class="section" id="timeline">
+<section class="section" id="seasons">
   <div class="section-head">
     <div class="eyebrow">хроника</div>
-    <h2>Путь сериала по сезонам</h2>
-    <p>Коротко о том, как менялся тон истории — своими словами, без спойлеров-простыней.</p>
+    <h2>Сезоны</h2>
+    <p>Нажми на сезон — откроется отдельное окно с описанием тона и настроения.</p>
   </div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-season">01</div>
+  <div class="season-list">
+    <div class="season-item" data-id="s1">
+      <div class="season-num">01</div>
       <div>
         <h3>Знакомство с городом</h3>
-        <p>Тихий провинциальный городок оказывается перекрёстком древних тайн. Романтика подростковой драмы встречается с вечным конфликтом.</p>
+        <p>Тихий городок и первые тайны</p>
       </div>
+      <div class="season-arrow">→</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-season">02–03</div>
+    <div class="season-item" data-id="s2">
+      <div class="season-num">02</div>
       <div>
-        <h3>Расширение мифологии</h3>
-        <p>История выходит за пределы города — древние семьи, старые счёты и правила, которые оказываются не такими незыблемыми.</p>
+        <h3>Тени прошлого</h3>
+        <p>Старые враги и новые правила</p>
       </div>
+      <div class="season-arrow">→</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-season">04–06</div>
+    <div class="season-item" data-id="s3">
+      <div class="season-num">03</div>
       <div>
-        <h3>Цена бессмертия</h3>
-        <p>Персонажи сталкиваются с последствиями собственных решений. Сериал всё чаще задаёт вопрос: что вы готовы потерять ради тех, кого любите.</p>
+        <h3>Древние приходят</h3>
+        <p>История выходит за пределы города</p>
       </div>
+      <div class="season-arrow">→</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-season">07–08</div>
+    <div class="season-item" data-id="s4">
+      <div class="season-num">04</div>
+      <div>
+        <h3>Цена выбора</h3>
+        <p>Последствия решений и новая жизнь</p>
+      </div>
+      <div class="season-arrow">→</div>
+    </div>
+    <div class="season-item" data-id="s5">
+      <div class="season-num">05</div>
+      <div>
+        <h3>Другой мир</h3>
+        <p>Учёба, разлуки и неожиданные связи</p>
+      </div>
+      <div class="season-arrow">→</div>
+    </div>
+    <div class="season-item" data-id="s6">
+      <div class="season-num">06</div>
+      <div>
+        <h3>Возвращение домой</h3>
+        <p>Потеря и то, что остаётся после</p>
+      </div>
+      <div class="season-arrow">→</div>
+    </div>
+    <div class="season-item" data-id="s7">
+      <div class="season-num">07</div>
+      <div>
+        <h3>Новые враги</h3>
+        <p>Город снова под угрозой</p>
+      </div>
+      <div class="season-arrow">→</div>
+    </div>
+    <div class="season-item" data-id="s8">
+      <div class="season-num">08</div>
       <div>
         <h3>Закрытие круга</h3>
-        <p>Финальные сезоны сводят все линии воедино и прощаются с городом, который так и не стал по-настоящему тихим.</p>
+        <p>Финал и прощание с Mystic Falls</p>
       </div>
+      <div class="season-arrow">→</div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<section class="section" id="quotes">
+<section class="section" id="atmosphere">
   <div class="section-head">
     <div class="eyebrow">настроение</div>
     <h2>За что мы это любим</h2>
   </div>
   <div class="quote-band">
-    <p class="voice">Это сериал о том, что бессмертие не избавляет от боли выбора — оно просто даёт больше времени, чтобы этот выбор осмыслить.</p>
-    <div class="attribution">— впечатление фаната, не цитата из сериала</div>
+    <p class="voice">Бессмертие не избавляет от боли выбора — оно просто даёт больше времени, чтобы этот выбор осмыслить.</p>
+    <div class="attribution">— впечатление фаната</div>
+  </div>
+  <div class="facts">
+    <div class="fact-card">
+      <h3>Город как персонаж</h3>
+      <p>Mystic Falls — не фон. Лес, мост, школа, особняк Сальваторе — всё создаёт ощущение, что здесь всегда что-то скрыто.</p>
+    </div>
+    <div class="fact-card">
+      <h3>Триада в центре</h3>
+      <p>Елена, Стефан и Деймон — ось сериала. Остальные герои то усиливают эту линию, то ломают её.</p>
+    </div>
+    <div class="fact-card">
+      <h3>Сила дружбы</h3>
+      <p>Бонни, Кэролайн и Джереми держат человеческую сторону истории. Без них всё было бы другим.</p>
+    </div>
+    <div class="fact-card">
+      <h3>Вечный вопрос</h3>
+      <p>Можно ли остаться собой, когда у тебя вечность? Сериал отвечает по-разному в каждом сезоне.</p>
+    </div>
   </div>
 </section>
 
-<div class="fan-note">
-  Это неофициальный фан-проект, созданный поклонниками. Все права на персонажей и историю принадлежат правообладателям оригинального сериала. Сайт не использует официальные материалы, кадры или дословные цитаты — только собственные впечатления и пересказ своими словами.
+<footer>Mystic Falls</footer>
+
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Закрыть">×</button>
+    <div class="char-mark" id="m-mark"></div>
+    <h2 id="m-name"></h2>
+    <div class="char-role" id="m-role"></div>
+    <div class="bio" id="m-bio"></div>
+    <div class="tags" id="m-tags"></div>
+  </div>
 </div>
 
-<footer>
-  Mystic Falls · Дневники вампира · сделано фанатами, для фанатов
-</footer>
+<script>
+const data = {
+  elena: {
+    mark: 'Е',
+    name: 'Елена Гилберт',
+    role: 'главная героиня сериала',
+    bio: '<p>Елена — центр притяжения всей истории. Обычная девушка из провинциального городка, которая внезапно оказывается в центре древних конфликтов.</p><p>Её сила — не в сверхспособностях, а в способности любить и выбирать, даже когда любой выбор кого-то ранит. Вокруг неё сходятся братья Сальваторе, друзья и весь город.</p><p>Именно её решения часто двигают сюжет дальше, чем любые заклинания или войны.</p>',
+    tags: ['главная', 'семья Гилберт', 'выбор']
+  },
+  stefan: {
+    mark: 'С',
+    name: 'Стефан Сальваторе',
+    role: 'брат-идеалист',
+    bio: '<p>Стефан — вампир, который больше всех хочет остаться «хорошим». Он контролирует жажду, держит слово и часто ставит чужую жизнь выше своей.</p><p>Отношения с братом — одна из самых сложных линий сериала: любовь, зависть, предательство и снова любовь.</p><p>Стефан — совесть истории. Даже когда мир вокруг рушится, он ищет правильный путь.</p>',
+    tags: ['Сальваторе', 'контроль', 'совесть']
+  },
+  damon: {
+    mark: 'Д',
+    name: 'Деймон Сальваторе',
+    role: 'брат-циник',
+    bio: '<p>Деймон появляется как опасный и непредсказуемый. За сарказмом и «я делаю, что хочу» скрывается человек, который умеет глубоко привязываться.</p><p>Его путь — один из самых заметных: от чистого хаоса к тому, кто готов жертвовать ради других.</p><p>Многие зрители именно из-за него остаются с сериалом до конца.</p>',
+    tags: ['Сальваторе', 'трансформация', 'обаяние']
+  },
+  bonnie: {
+    mark: 'Б',
+    name: 'Бонни Беннетт',
+    role: 'ведьма · опора друзей',
+    bio: '<p>Бонни — ведьма из древней линии Беннетт. Без неё многие сюжеты просто не сложились бы: защита, заклинания, возвращение из невозможного.</p><p>Она лучшая подруга Елены и одна из самых надёжных людей в городе. Часто именно Бонни платит высокую цену за спасение остальных.</p><p>Её линия — про силу, долг и дружбу, которая сильнее магии.</p>',
+    tags: ['ведьма', 'Беннетт', 'самопожертвование']
+  },
+  caroline: {
+    mark: 'К',
+    name: 'Кэролайн Форбс',
+    role: 'сила и рост',
+    bio: '<p>Кэролайн начинается как яркая школьная «королева». Но сериал даёт ей один из лучших путей роста.</p><p>Она учится быть сильной, настоящей и независимой. Становится той, на кого можно положиться — и той, кто умеет любить глубоко.</p><p>Многие считают её одной из самых цельных героинь всего сериала.</p>',
+    tags: ['Форбс', 'рост', 'сила']
+  },
+  jeremy: {
+    mark: 'Дж',
+    name: 'Джереми Гилберт',
+    role: 'младший брат Елены',
+    bio: '<p>Джереми растёт в городе, где его сестра — магнит для сверхъестественного. Он проходит через потерю, гнев, обучение и попытки найти своё место.</p><p>Его связь с Бонни и собственный путь добавляют истории ещё один слой — не всё решается только вампирами и ведьмами.</p><p>Младший брат, который постепенно становится самостоятельной частью большого сюжета.</p>',
+    tags: ['семья Гилберт', 'взросление', 'охотник']
+  },
+  liz: {
+    mark: 'Л',
+    name: 'Лиз Форбс',
+    role: 'шериф · мама Кэролайн',
+    bio: '<p>Элизабет «Лиз» Форбс — шериф Mystic Falls и мать Кэролайн. Она знает о городе больше, чем большинство жителей, и часто стоит между сверхъестественным и обычными людьми.</p><p>Её отношения с дочерью — одна из тёплых и сложных линий: строгость, защита, принятие и любовь.</p><p>Лиз показывает, что «обычные» люди в этом мире тоже могут быть настоящими героями.</p>',
+    tags: ['шериф', 'семья Форбс', 'защита города']
+  },
+  klaus: {
+    mark: 'К',
+    name: 'Клаус Майклсон',
+    role: 'первородный гибрид',
+    bio: '<p>Клаус — один из центральных персонажей мира «Дневников вампира» и «Первородных». Он сочетает огромную силу, хитрость и сложные семейные отношения.</p><p>За жестокостью и стремлением к контролю скрывается сильная привязанность к семье.</p>',
+    tags: ['Майклсоны', 'гибрид', 'сила']
+  },
+  elijah: {
+    mark: 'Э',
+    name: 'Элайджа Майклсон',
+    role: 'первородный вампир',
+    bio: '<p>Элайджа известен своим спокойствием, честью и обещанием защищать семью.</p><p>Он часто пытается сохранить достоинство даже тогда, когда вокруг происходит хаос.</p>',
+    tags: ['Майклсоны', 'честь', 'семья']
+  },
+  rebekah: {
+    mark: 'Р',
+    name: 'Ребекка Майклсон',
+    role: 'первородная вампирша',
+    bio: '<p>Ребекка — младшая сестра Клауса и Элайджи. Несмотря на огромную силу, она больше всего хочет любви, семьи и обычной человеческой жизни.</p>',
+    tags: ['Майклсоны', 'семья', 'мечта']
+  },
+  alaric: {
+    mark: 'А',
+    name: 'Аларик Зальцман',
+    role: 'охотник · наставник',
+    bio: '<p>Аларик становится одним из главных защитников друзей и семьи. Он сочетает опыт борьбы со сверхъестественным с ролью наставника.</p>',
+    tags: ['охотник', 'наставник', 'защитник']
+  },
+  tyler: {
+    mark: 'Т',
+    name: 'Тайлер Локвуд',
+    role: 'оборотень · гибрид',
+    bio: '<p>Тайлер — один из жителей Mystic Falls, чья семья связана с древним проклятием оборотней.</p><p>Его история проходит через борьбу с собственной природой, любовь, потери и попытки защитить близких.</p>',
+    tags: ['Локвуд', 'оборотень', 'гибрид']
+  },
+  s1: {
+    mark: '01',
+    name: 'Сезон 1',
+    role: 'Знакомство с городом',
+    bio: '<p>Тихий провинциальный городок Mystic Falls оказывается перекрёстком древних тайн. Появляется новый ученик, и вокруг Елены начинают сходиться события, которые невозможно объяснить обычной жизнью.</p><p>Романтика подростковой драмы встречается с вампирским конфликтом. Здесь закладываются главные отношения и первое ощущение, что рассвет в этом городе — не гарантия безопасности.</p>',
+    tags: ['начало', 'тайны', 'романтика']
+  },
+  s2: {
+    mark: '02',
+    name: 'Сезон 2',
+    role: 'Тени прошлого',
+    bio: '<p>Прошлое возвращается. Старые враги, древние договорённости и персонажи, которые слишком похожи на тех, кого мы уже знаем.</p><p>Город становится опаснее. Выбор героев начинает стоить дороже, а правила, казавшиеся незыблемыми, оказываются гибкими.</p>',
+    tags: ['прошлое', 'опасность', 'выбор']
+  },
+  s3: {
+    mark: '03',
+    name: 'Сезон 3',
+    role: 'Древние приходят',
+    bio: '<p>История выходит далеко за пределы Mystic Falls. Появляются силы, которые старше города и большинства его жителей.</p><p>Сезон меняет масштаб: локальная драма превращается в историю о вековых конфликтах, семье и власти.</p>',
+    tags: ['оригиналы', 'масштаб', 'власть']
+  },
+  s4: {
+    mark: '04',
+    name: 'Сезон 4',
+    role: 'Цена выбора',
+    bio: '<p>Герои сталкиваются с последствиями своих решений. Появляются новые состояния, новые ограничения и вопросы о том, что значит остаться собой.</p><p>Сериал всё чаще спрашивает: что вы готовы потерять ради тех, кого любите?</p>',
+    tags: ['последствия', 'трансформация', 'жертва']
+  },
+  s5: {
+    mark: '05',
+    name: 'Сезон 5',
+    role: 'Другой мир',
+    bio: '<p>Часть истории уходит из родного города. Учёба, разлуки, новые лица и неожиданные связи.</p><p>Герои растут, отдаляются и снова ищут друг друга. Mystic Falls всё равно тянет обратно.</p>',
+    tags: ['разлука', 'учёба', 'новые связи']
+  },
+  s6: {
+    mark: '06',
+    name: 'Сезон 6',
+    role: 'Возвращение домой',
+    bio: '<p>Потери оставляют следы. Кто-то возвращается, кто-то меняется навсегда. Город снова становится центром, но уже другим.</p><p>Сезон про то, что остаётся после больших перемен, и как люди (и не только люди) учатся жить дальше.</p>',
+    tags: ['возвращение', 'потеря', 'перемены']
+  },
+  s7: {
+    mark: '07',
+    name: 'Сезон 7',
+    role: 'Новые враги',
+    bio: '<p>Появляются новые угрозы, и привычный баланс города снова рушится. Старые союзы проверяются на прочность.</p><p>Герои вынуждены защищать то, что осталось, и принимать решения, от которых зависит будущее Mystic Falls.</p>',
+    tags: ['угроза', 'защита', 'союзы']
+  },
+  s8: {
+    mark: '08',
+    name: 'Сезон 8',
+    role: 'Закрытие круга',
+    bio: '<p>Финальный сезон сводит линии воедино. Город, который так и не стал по-настоящему тихим, получает своё прощание.</p><p>Здесь закрываются главные истории, звучат последние выборы и ответы на вопросы, которые копились годами.</p>',
+    tags: ['финал', 'прощание', 'выбор']
+  }
+};
+
+const overlay = document.getElementById('modal');
+const mMark = document.getElementById('m-mark');
+const mName = document.getElementById('m-name');
+const mRole = document.getElementById('m-role');
+const mBio = document.getElementById('m-bio');
+const mTags = document.getElementById('m-tags');
+const closeBtn = document.getElementById('modal-close');
+
+function openModal(id) {
+  const c = data[id];
+  if (!c) return;
+  mMark.textContent = c.mark;
+  mName.textContent = c.name;
+  mRole.textContent = c.role;
+  mBio.innerHTML = c.bio;
+  mTags.innerHTML = (c.tags || []).map(t => '<span class="tag">' + t + '</span>').join('');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-id]').forEach(function(el) {
+  el.addEventListener('click', function() { openModal(el.dataset.id); });
+});
+
+closeBtn.addEventListener('click', closeModal);
+overlay.addEventListener('click', function(e) {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
 
 </body>
 </html>
